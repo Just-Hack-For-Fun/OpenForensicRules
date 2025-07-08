@@ -1,0 +1,34 @@
+name: 'LinuxSSHAccess'
+doc: 'Linux 平台上SSH保存的公钥以及访问其他SSH服务器的目标地址记录'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '%%users_homedir%%/.ssh/authorized_keys'
+        - '%%users_homedir%%/.ssh/authorized_keys2'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '%%users_homedir%%/.ssh/known_hosts'
+urls:
+  - 'https://mp.weixin.qq.com/s/R_CUPqa2WQUgOJu__5MFzg'
+author: 'NOPTeam'
+
+---
+
+name: 'LinuxSSHConfig'
+doc: 'Linux 平台上 SSH 客户端配置文件收集，其中可能会被利用来权限维持'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/ssh/ssh_config'
+        - '%%users_homedir%%/.ssh/config'
+urls:
+  - 'https://mp.weixin.qq.com/s/7WDWjMOI7GdUM5e4vDVAoA'
+author: 'NOPTeam'

@@ -1,0 +1,38 @@
+name: LinuxLogin
+doc: Linux 登录相关信息
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: w
+      args: []
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: who
+      args: []
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: last
+      args:
+        - '-awF'
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: users
+      args: []
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: lastlog
+      args: []
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: lslogins
+      args: []
+urls:
+  - https://www.jianshu.com/p/05926453654c

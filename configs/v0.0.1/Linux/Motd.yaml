@@ -1,0 +1,12 @@
+name: 'LinuxMotd'
+doc: 'Linux 平台上 motd 是欢迎信息，该部分内容可能被用作权限维持'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/update-motd.d/'
+urls:
+  - 'https://mp.weixin.qq.com/s/AvnCXkdGqo8uBBRYH61ihA'
+author: 'NOPTeam'

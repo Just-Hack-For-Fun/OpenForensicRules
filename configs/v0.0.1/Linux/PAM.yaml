@@ -1,0 +1,23 @@
+name: 'LinuxPAM'
+doc: "Linux 平台上 PAM 是一套身份认证框架，用于统一和灵活地管理系统的各种认证方式。\nPAM 常被用于权限维持。"
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'debsums'
+      args:
+        - 'libpam0g'
+        - '-a'
+        - '-c'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'debsums'
+      args:
+        - '-a'
+        - '-c'
+        - '2>/dev/null'
+urls:
+  - 'https://mp.weixin.qq.com/s/W4RX5WRzUp-hK1_Pr3rp7w'
+author: 'NOPTeam'

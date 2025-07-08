@@ -1,0 +1,10 @@
+name: 'LinuxPtraceScope'
+doc: "Linux 平台上 /proc/sys/kernel/yama/ptrace_scope 这个文件是 Linux 内核安全模块 YAMA 提供的一个“开关”，用于限制 ptrace 系统调用的使用范围，从而增强系统的安全性。\n\n内容含义如下：\n- 0\t没有限制，任何进程都可以 ptrace 其它进程（只要有权限，如相同的用户）。不推荐，除非有特别需求。\n- 1\t（默认） 只有父进程可以 ptrace 其直接的子进程，或者进程彼此有明确的 ptrace 关系。更安全，推荐。\n- 2\t只有 root 用户可以使用 ptrace。\n- 3\t完全禁止 ptrace，即使是 root 也不行。"
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/proc/sys/kernel/yama/ptrace_scope'
+author: 'NOPTeam'

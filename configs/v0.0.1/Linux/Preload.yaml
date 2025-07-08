@@ -1,0 +1,30 @@
+name: 'LinuxPreload'
+doc: 'Linux 平台上常见的动态链接库劫持排查'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'echo'
+      args:
+        - '$LD_PRELOAD'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/ld.so.conf'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'echo'
+      args:
+        - '$LD_LIBRARY_PATH'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/ld.so.preload'
+urls:
+  - 'https://mp.weixin.qq.com/s/7mOeZ6DkSAFqzibN82qcMg'
+  - 'https://mp.weixin.qq.com/s/InMQaKOwns2mEIp5yF8dDw'
+author: 'NOPTeam'

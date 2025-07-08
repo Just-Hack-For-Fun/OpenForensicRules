@@ -1,0 +1,11 @@
+name: 'LinuxTcpWrappers'
+doc: "Linux 平台上 TCP Wrappers 是一种用于控制对网络服务访问的安全工具。它可以限制和记录通过 inetd超级服务器启动的服务的访问。\n其配置文件中的 spawn 和 twist 可能会被用来执行命令。"
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/hosts.allow'
+        - '/etc/hosts.deny'
+author: 'NOPTeam'

@@ -1,0 +1,11 @@
+name: 'LinuxIptables'
+doc: 'Linux 平台上 iptables 可能被用于端口复用等权限维持'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'iptables'
+      args:
+        - '-L'
+author: 'NOPTeam'

@@ -1,0 +1,10 @@
+name: 'LinuxLog'
+doc: 'Linux 平台上日志文件收集'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/var/log/'
+author: 'NOPTeam'

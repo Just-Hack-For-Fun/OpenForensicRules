@@ -1,0 +1,16 @@
+name: 'LinuxProcessFileDeleted'
+doc: 'Linux 平台上进程启动文件被删除的情况排查，部分恶意文件会删除进程启动文件来避免被分析，常规程序通常不会删除进程启动文件。'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'ls'
+      args:
+        - '-al'
+        - '/proc/*/exe'
+        - '2>/dev/null'
+        - '|'
+        - 'grep'
+        - 'deleted'
+author: 'NOPTeam'

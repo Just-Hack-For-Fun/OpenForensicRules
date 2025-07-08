@@ -1,0 +1,20 @@
+name: 'LinuxPythonPthBackdoor'
+doc: "Linux 平台上 Python 中 .pth 后缀的文件用于扩展模块搜索路径。\n当此类文件位于 site-packages 或 dist-packages 等目录时，Python会在启动时自动处理文件内容但是它有一个问题，如果文件以 import 开头，那么在执行任意 Python 代码时就会执行 *.pth 文件的代码"
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'echo'
+      args:
+        - '$PYTHONPATH'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'locate'
+      args:
+        - '.pth'
+urls:
+  - 'https://dfir.ch/posts/publish_python_pth_extension/'
+  - 'https://www.volexity.com/blog/2024/04/12/zero-day-exploitation-of-unauthenticated-remote-code-execution-vulnerability-in-globalprotect-cve-2024-3400/'
+author: 'NOPTeam'

@@ -1,0 +1,18 @@
+name: 'LinuxIntegrity'
+doc: "Linux 平台上软件以及配置文件完整性检查。\nubuntu 平台会使用 debsums ，redhat 系会使用 rpm。"
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'rpm'
+      args:
+        - '-Va'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'debsums'
+      args:
+        - '--all'
+        - '--changed'
+author: 'NOPTeam'

@@ -1,0 +1,21 @@
+name: LinuxSpecialPermission
+doc: Linux 平台上具有 SUID、SGID 等权限的目录及文件
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: find
+      args:
+        - /
+        - '-perm'
+        - /4000
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: find
+      args:
+        - /
+        - '-perm'
+        - /2000

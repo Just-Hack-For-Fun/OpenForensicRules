@@ -1,0 +1,51 @@
+name: 'LinuxStartupService'
+doc: 'Linux 平台上开机自启的服务项'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'systemctl'
+      args:
+        - 'list-unit-files'
+        - '--type=service'
+        - '|'
+        - 'grep'
+        - 'enabled'
+author: 'NOPTeam'
+
+---
+
+name: 'LinuxStartConfig'
+doc: 'Linux 平台上开机或登录自启的配置文件'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/rc.local'
+        - '/etc/rc.d/rc.local'
+        - '/etc/profile'
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/rc.d/init.d/'
+        - '/etc/profile.d/'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'chkconfig'
+      args:
+        - '--list'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/bashrc'
+        - '%%users_homedir%%/.bashrc'
+        - '%%users_homedir%%/.bash_profile'
+        - '%%users_homedir%%/.profile'
+        - '%%users_homedir%%/.bash_logout'
+author: 'NOPTeam'

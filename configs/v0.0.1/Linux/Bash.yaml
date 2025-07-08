@@ -1,0 +1,13 @@
+name: 'LinuxBashBuiltIn'
+doc: 'Linux 平台上 Bash 内置的函数以及命令信息'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'compgen'
+      args:
+        - '-b'
+urls:
+  - 'https://www.cnblogs.com/zhiminyu/p/14388997.html'
+author: 'NOPTeam'

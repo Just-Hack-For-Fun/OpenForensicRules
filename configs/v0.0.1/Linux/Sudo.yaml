@@ -1,0 +1,16 @@
+name: 'LinuxSudo'
+doc: 'Linux 平台上 sudo 用于赋予用户特定的权限，可能被利用来进行权限维持。'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/sudo.conf'
+        - '/etc/sudoers'
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/sudoers.d/'
+author: 'NOPTeam'

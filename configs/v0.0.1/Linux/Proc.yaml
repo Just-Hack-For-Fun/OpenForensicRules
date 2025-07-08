@@ -1,0 +1,18 @@
+name: 'LinuxProc'
+doc: "Linux 平台上 proc 是 Linux 系统中的一个虚拟文件系统，不是存储真实文件的地方，而是内核提供给用户空间的一种内存映射接口。\n本 Artifact 是用于比对 ps -aux 与实际 proc 的差异，寻找是否存在隐藏进程。"
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'ps'
+      args:
+        - '-aux'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'ls'
+      args:
+        - '-al'
+        - '/proc'
+author: 'NOPTeam'

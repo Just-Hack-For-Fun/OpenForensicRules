@@ -1,0 +1,71 @@
+name: 'LinuxCrontab'
+doc: 'Linux 计划任务程序，包括所有可能的文件'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/crontab'
+        - '/etc/anacrontab'
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/cron.d/'
+        - '/var/spool/cron/'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/var/log/cron'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'journalctl'
+      args:
+        - '-u'
+        - 'crond'
+urls:
+  - 'https://mp.weixin.qq.com/s/snJ80-Aiy9-XfFvJw380vg'
+author: 'NOPTeam'
+
+---
+
+name: 'LinuxAt'
+doc: 'Linux 平台中 at 用于安排只执行一次的定时任务（在指定的将来某个时间点执行）。'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/var/spool/at/'
+        - '/var/spool/atjobs/'
+        - '/var/spool/cron/atjobs/'
+        - '/usr/spool/at/'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/at.allow'
+        - '/etc/at.deny'
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/at.d/'
+        - '/etc/init.d/atd'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/lib/systemd/system/atd.service'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/var/log/atd'
+urls:
+  - 'https://mp.weixin.qq.com/s/snJ80-Aiy9-XfFvJw380vg'
+author: 'NOPTeam'

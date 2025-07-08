@@ -1,0 +1,11 @@
+name: 'LinuxASLR'
+doc: "Linux 平台上ASLR 是一项 Linux 系统的保护措施，将某些地址空间进行随机化，减缓一些溢出攻击。\n\n此处文件内容含义如下：\n0 - 表示关闭进程地址空间随机化。\n1 - 表示将mmap的基址，stack和vdso页面随机化\n2 - 表示在1的基础上增加堆（heap）的随机化"
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/proc/sys/kernel/randomize_va_space'
+        - '/etc/sysctl.conf'
+author: 'NOPTeam'

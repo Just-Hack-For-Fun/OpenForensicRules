@@ -1,0 +1,10 @@
+name: 'LinuxAccounts'
+doc: 'Linux 平台用户相关内容，其中 /etc/passwd 文件可能包含恶意用户或额外配置了密码，用于权限维持'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/passwd'
+author: 'NOPTeam'

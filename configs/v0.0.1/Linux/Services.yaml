@@ -1,0 +1,13 @@
+name: 'LinuxServices'
+doc: 'Linux 平台上运行的服务相关收集'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'systemctl'
+      args:
+        - 'list-units'
+        - '--type=service'
+        - '--state=running'
+author: 'NOPTeam'

@@ -1,0 +1,13 @@
+name: 'LinuxCapabilities'
+doc: 'Linux 平台上 capabilities 是一种对 Linux 权限更严格划分和管控的规范，设置得当可以有效防止过度授权造成提权操作'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'getcap'
+      args:
+        - '-r'
+        - '/'
+        - '2>/dev/null'
+author: 'NOPTeam'

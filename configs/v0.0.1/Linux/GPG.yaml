@@ -1,0 +1,11 @@
+name: 'LinuxGPG'
+doc: 'Linux 平台上软件源会将 GPG 公钥存储在系统中，用于验证软件源中的内容是否被篡改。该 Artifact 用于收集公钥。'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/apt/trusted.gpg.d/'
+        - '/etc/pki/rpm-gpg/'
+author: 'NOPTeam'

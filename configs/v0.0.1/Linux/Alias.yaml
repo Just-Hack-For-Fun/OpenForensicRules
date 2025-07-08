@@ -1,0 +1,14 @@
+name: LinuxAlias
+doc: |-
+  Linux 平台上 alias 信息收集。
+  alias 是用于设置别名的命令，可被利用来进行权限维持。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: alias
+      args: []
+urls:
+  - https://mp.weixin.qq.com/s/yXY8opNctHK5d9tXhQj35w

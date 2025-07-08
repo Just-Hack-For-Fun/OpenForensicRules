@@ -1,0 +1,28 @@
+name: 'LinuxHistoryFile'
+doc: '所有用户的 .history 文件'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '%%users_homedir%%/.bash_history'
+        - '%%users_homedir%%/.zsh_history'
+        - '%%users_homedir%%/.sh_history'
+        - '%%users_homedir%%/.ksh_history'
+        - '%%users_homedir%%/.history'
+        - '%%users_homedir%%/.csh_history'
+        - '%%users_homedir%%/.tcsh_history'
+        - '%%users_homedir%%/.local/share/fish/fish_history'
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/shells'
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'echo'
+      args:
+        - '$SHELL'
+author: 'NOPTeam'

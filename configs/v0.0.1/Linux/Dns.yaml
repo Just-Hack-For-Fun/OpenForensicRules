@@ -1,0 +1,10 @@
+name: 'LinuxDnsConfig'
+doc: 'Linux 平台上DNS配置收集，用于判断是否存在 DNS 劫持等。'
+version: '0.0.1'
+sources:
+  - type: 'FILE'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/resolv.conf'
+author: 'NOPTeam'

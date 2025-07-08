@@ -1,0 +1,11 @@
+name: 'LinuxTrap'
+doc: 'Linux 平台上 trap 是一个内建命令，用于捕获和处理信号，或者在脚本退出时（包括正常退出、异常中断）执行特定的命令。'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Linux'
+    attributes:
+      cmd: 'trap'
+      args:
+        - '-p'
+author: 'NOPTeam'

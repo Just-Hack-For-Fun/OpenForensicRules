@@ -1,0 +1,14 @@
+name: 'LinuxUdev'
+doc: "Linux 平台上 udev 是Linux kernel的设备管理器，主要管理 /dev 目录底下的设备节点。它同时也是用来接替devfs 及 hotplug 的功能，这意味着它要在添加/删除硬件时处理 /dev 目录以及所有用户空间的行为，包括加载固件时。\n\n我们需要着重关注每个规则文件中以下三个关键字(赋值键)：\n- RUN\n- PROGRAM\n- IMPORT"
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/udev/rules.d/'
+        - '/run/udev/rules.d/'
+        - '/lib/udev/rules.d/'
+urls:
+  - 'https://mp.weixin.qq.com/s/t9pOy5MzZ6hxH0gdgprI7g'
+author: 'NOPTeam'

@@ -1,0 +1,10 @@
+name: 'LinuxHomeTemplate'
+doc: 'Linux 平台上在新建用户需要创建家目录时，会从模板处复制一份给新用户，如果攻击者在此处投毒，新创建用户可能都会受影响。'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/etc/skel/'
+author: 'NOPTeam'

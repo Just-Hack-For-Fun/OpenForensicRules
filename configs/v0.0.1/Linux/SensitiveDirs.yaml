@@ -1,0 +1,12 @@
+name: 'SensitiveDirs'
+doc: 'Linux 平台上存在一些经常被攻击者使用的目录，例如 /tmp、/dev/shm ，本 Artifact 用于收集这些内容， /tmp 内容可能较多，需要根据实际情况谨慎收集。'
+version: '0.0.1'
+sources:
+  - type: 'PATH'
+    supported_os: 'Linux'
+    attributes:
+      paths:
+        - '/tmp/'
+        - '/dev/shm'
+        - '/var/tmp'
+author: 'NOPTeam'

@@ -1,0 +1,36 @@
+name: LinuxKernalMod
+doc: Linux 平台上内核平台配置、已加载内核模块、报错日志收集。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: zgrep
+      args:
+        - CONFIG_MODULE_SIG
+        - /boot/config-$(uname -r)
+        - '|'
+        - grep
+        - '-v'
+        - '"^#"'
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: lsmod
+      args: []
+  - type: COMMAND
+    supported_os: Linux
+    attributes:
+      cmd: dmesg
+      args:
+        - '|'
+        - grep
+        - '-i'
+        - '"taint"'
+  - type: FILE
+    supported_os: Linux
+    attributes:
+      paths:
+        - /var/log/kern.log
+        - /var/log/syslog
