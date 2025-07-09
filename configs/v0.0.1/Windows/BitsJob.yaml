@@ -1,0 +1,22 @@
+name: WindowsBitsJob
+doc: >-
+  BITS Job（Background Intelligent Transfer Service 任务）是微软 Windows
+  系统中的一个后台智能传输服务任务单位。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: bitsadmin
+      args:
+        - /list
+        - /allusers
+        - /verbose
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-BitsTransfer -AllUsers"'

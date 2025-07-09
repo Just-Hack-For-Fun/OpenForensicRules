@@ -1,0 +1,22 @@
+name: 'WindowsDLLCheck'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_VALUE'
+    supported_os: 'Windows'
+    attributes:
+      key_value_pairs:
+        - key: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager'
+          value: 'SafeDllSearchMode'
+  - type: 'REGISTRY_VALUE'
+    supported_os: 'Windows'
+    attributes:
+      key_value_pairs:
+        - key: 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows'
+          value: 'AppInit_DLLs'
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs'
+version: '0.0.1'
+doc: 'Windows DLL 劫持、注入等相关信息收集。'

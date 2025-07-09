@@ -1,0 +1,17 @@
+name: WindowsSysteminfo
+doc: Windows 平台上系统基本信息以及补丁信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: systeminfo
+      args: []
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: wmic
+      args:
+        - qfe
+        - list

@@ -1,0 +1,14 @@
+name: 'WindowsCOMHijacking'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_CLASSES_ROOT\CLSID\*\InprocServer32'
+        - 'HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\*\InprocServer32'
+        - 'HKEY_USERS\%%users_sid%%\Software\Classes\CLSID\*\InprocServer32'
+version: '0.0.1'
+doc: "COM（Component Object Model）是微软提出的一种软件组件对象模型，用于 Windows 各种程序和系统组件之间的通信和功能复用。\n程序通过CLSID/ProgID 等方式调用系统或第三方注册的 COM 组件。\n\nWindows 程序调用 COM 组件时，会从注册表查找对应 CLSID/ProgID 的实现 DLL 路径并加载。\n攻击者通过修改注册表，把某个常用或系统自动调用的 COM 组件的路径指向自己的恶意 DLL。\n这样，当系统或软件调用该 COM 组件时，就会自动加载攻击者的恶意代码，实现代码注入、权限维持、持久化等。"
+urls:
+  - 'https://paper.seebug.org/2030/'

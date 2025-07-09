@@ -1,0 +1,10 @@
+name: 'WindowsScreen'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_USERS\%%users_sid%%\Control Panel\Desktop'
+version: '0.0.1'
+doc: 'Windows 平台上屏幕保护排查。'

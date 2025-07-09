@@ -1,0 +1,34 @@
+name: WindowsNetwork
+doc: Windows 上网络连接信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: netstat
+      args:
+        - '-a'
+        - '-n'
+        - '-o'
+        - '-b'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: nbtstat
+      args:
+        - '-c'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-NetTCPConnection"'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-NetUDPEndpoint"'

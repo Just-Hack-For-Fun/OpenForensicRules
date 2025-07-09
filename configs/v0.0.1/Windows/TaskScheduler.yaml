@@ -1,0 +1,30 @@
+name: 'WindowsTaskScheduler'
+doc: 'Windows 计划任务（Task Scheduler）信息收集。'
+author: 'NOPTeam'
+version: '0.0.1'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'schtasks'
+      args:
+        - '/query'
+        - '/fo'
+        - 'LIST'
+        - '/v'
+  - type: 'PATH'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - 'C:\Windows\System32\Tasks'
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\*'
+  - type: 'FILE'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - 'C:\Windows\Tasks\SchedLgU.txt'
+        - 'C:\Windows\System32\winevt\Logs\Microsoft-Windows-TaskScheduler*.evtx'

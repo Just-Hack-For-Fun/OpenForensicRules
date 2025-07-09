@@ -1,0 +1,37 @@
+name: WindowsFirewall
+doc: Windows 平台上防火墙的状态以及规则。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-NetFirewallProfile"'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: netsh
+      args:
+        - advfirewall
+        - show
+        - allprofiles
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-NetFirewallRule | Where-Object { $_.Enabled -eq ''True'' }"'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: netsh
+      args:
+        - advfirewall
+        - firewall
+        - show
+        - rule
+        - name=all

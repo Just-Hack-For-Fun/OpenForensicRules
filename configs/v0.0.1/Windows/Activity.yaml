@@ -1,0 +1,287 @@
+name: WindowsGroupPolicy
+doc: |-
+  Windows 平台上组策略中关于进程创建是否设置了记录。
+
+  计算机配置 -> Windows设置 -> 安全设置 -> ⾼级审核策略配置 -> 详细跟踪 -> 审核进程创建
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: auditpol
+      args:
+        - /get
+        - /subcategory:"Process Creation"
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: auditpol
+      args:
+        - /get
+        - /subcategory:"进程创建"
+
+---
+
+name: WindowsAmcache
+doc: |-
+  Windows 平台上 Amcache 是一个用于记录系统上执行过的程序及其信息的数据库。
+  它主要用于取证调查和安全分析，因为它会在后台自动收集和保存可执行文件的元数据，包括程序路径、首次运行时间、文件哈希值等信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: .\tools\AmcacheParser.exe
+      args:
+        - '-f'
+        - C:\Windows\appcompat\Programs\Amcache.hve
+        - '--csv'
+        - '%temp%'
+  - type: FILE
+    supported_os: Windows
+    attributes:
+      paths:
+        - '%%current_user_temp%%/*_Amcache_*.csv'
+urls:
+  - https://github.com/EricZimmerman/AmcacheParser
+
+---
+
+name: WindowsShimCache
+doc: >-
+  Windows 平台上的ShimCache（全名 Application Compatibility Cache，应用兼容性缓存）是 Windows
+  操作系统用于程序兼容性支持的一个内部机制。它最常被数字取证、安全分析和溯源调查用来判断某个可执行文件曾经是否在系统上运行过，即使这个文件和日志都已经被删除，ShimCache
+  也可能有残留记录。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session
+          Manager\AppCompatCache
+
+---
+
+name: WindowsUserAssist
+doc: >-
+  Windows 平台上 UserAssist 是 Windows
+  注册表中的一个特殊分支，用于记录用户通过图形界面（如开始菜单、桌面、资源管理器等）运行过的程序的信息。它最初的目的是帮助 Windows
+  统计和优化“常用程序”列表，但在数字取证和行为审计中非常有价值，因为它能反映出用户实际交互打开过哪些程序及其次数和最后时间。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\*
+
+---
+
+name: WindowsMUICache
+doc: >-
+  Windows 平台上 MUICache 是 Windows
+  操作系统中的⼀个功能，⽤于记录和缓存多语⾔⽤户界⾯（MUI）⽂件的信息。它主要⽤于加快多语⾔应⽤程序的启动速度，并提供对多语⾔资源的访问⽀持。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\ShellNoRoam\MUICache
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\MUICache
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Classes\Local
+          Settings\Software\Microsoft\Windows\Shell\MuiCache
+
+---
+
+name: WindowsRunMRU
+doc: |-
+  Windows 平台上 RunMRU 是注册表中的一个条目，用于记录“运行”对话框（Win+R 或开始菜单 > 运行）历史输入的命令。
+  它能反映出用户近期通过“运行”窗口手动输入过哪些路径、命令、网址等，对于用户操作溯源和数字取证非常有用。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+
+---
+
+name: WindowsAppCompatFlags
+doc: >-
+  AppCompatFlags 注册表键（AppCompatFlags Registry Keys）是 Windows
+  操作系统应用程序兼容性机制（Application Compatibility, Shim
+  Engine）的一部分。它用于记录和配置针对特定可执行文件的兼容性设置、强制沙箱、强制以管理员权限运行等信息。这些信息既可能是系统自动生成，也可以是用户手动配置（比如在程序右键属性里“兼容性”选项卡里的设置）。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\*\
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\*\*\
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\*\
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows
+          NT\CurrentVersion\AppCompatFlags\*\*\*\
+
+---
+
+name: WindowsPrefetch
+doc: |-
+  Prefetch 是 Windows 操作系统为加快程序启动速度而设计的程序预读机制，也是一类特殊的磁盘文件（不是注册表项！）和相关分析术语。
+  在数字取证领域，Prefetch 文件可以用来判断某个程序是否被运行过、运行过多少次、最后一次运行时间等信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_VALUE
+    supported_os: Windows
+    attributes:
+      key_value_pairs:
+        - key: >-
+            HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session
+            Manager\Memory Management\PrefetchParameters
+          value: EnablePrefetcher
+  - type: PATH
+    supported_os: Windows
+    attributes:
+      paths:
+        - C:\Windows\Prefetch\
+
+---
+
+name: WindowsApplicationExperience
+doc: >-
+  Application-Experience（应用体验，常缩写为 AE 或 AppCompat）是 Windows
+  操作系统的一个系统服务和相关组件，主要用于应用兼容性和用户体验改进。
+
+  它包括一系列后台服务、注册表项和日志，用于：
+
+  - 检测和记录应用兼容性问题
+
+  - 支持“兼容性助手”弹窗和建议（如“此程序可能没有正确安装”之类提示）
+
+  - 辅助 Windows 安装、升级和程序运行的平滑化
+
+  - 记录部分程序的安装、卸载、运行等操作的相关信息
+
+  这些机制有助于微软收集兼容性数据，改进后续系统和补丁，同时也为数字取证分析提供了一些痕迹。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: FILE
+    supported_os: Windows
+    attributes:
+      paths:
+        - >-
+          C:\Windows\System32\winevt\Logs\Microsoft-Windows-Application-Experience*.evtx
+
+---
+
+name: WindowsJumpLists
+doc: >-
+  Jump Lists（跳转列表）是 Windows 7
+  及以后引入的一项功能，用于记录和展示用户最近或常用打开的文件、文件夹、网址等操作历史，并通过任务栏和开始菜单为用户提供快速访问入口。它不仅提升了用户体验，也为取证分析提供了重要的用户操作轨迹。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: PATH
+    supported_os: Windows
+    attributes:
+      paths:
+        - '%%users_appdata%%\Microsoft\Windows\Recent\AutomaticDestinations\'
+        - '%%users_appdata%%\Microsoft\Windows\Recent\CustomDestinations\'
+
+---
+
+name: WindowsSRUM
+doc: >-
+  SRUM（System Resource Usage Monitor，系统资源使用监控器）是自 Windows 8
+  起引入的一个系统组件，用于记录和监控系统资源的详细使用情况。SRUM 会持续采集并保存如下数据：
+
+  - 各个进程/应用的CPU、内存、网络、能耗等资源消耗
+
+  - 网络连接的应用、IP、流量统计
+
+  - 用户活动（如程序启动、前台/后台运行情况）
+
+  这些数据会被系统用于电池优化、能耗分析、网络流量统计等内部用途，但对于数字取证来说，SRUM 是一个极其宝贵的用户行为和系统活动历史分析源。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: PATH
+    supported_os: Windows
+    attributes:
+      paths:
+        - C:\Windows\System32\sru\
+
+---
+
+name: WindowsLastVisitedMRU
+doc: >-
+  LastVisitedMRU 是 Windows
+  注册表中用于记录资源管理器（Explorer）或常见文件对话框中“最近访问过的文件夹/路径”历史的一个项目。
+
+  在数字取证中，LastVisitedMRU 可还原用户最近通过“打开/保存”对话框访问过哪些文件夹，属于用户操作轨迹的重要部分。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRULegacy
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU\*\
+urls:
+  - https://www.cybertriage.com/artifact/windows-opensave-mru-artifact/
+
+---
+
+name: WindowsRecentDocs
+doc: Windows 平台上用于记录该用户最近打开过的文件列表，也就是 Windows “最近文档”功能的核心数据源。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_USERS\%%users_sid%%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs

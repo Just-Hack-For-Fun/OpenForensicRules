@@ -1,0 +1,10 @@
+name: 'WindowsAppCertDLLs'
+doc: "AppCert DLLs 是 Windows 的一个高级进程拦截与注入机制，广泛用于安全产品、调试器、取证工具。\n当程序使用 CreateProcess、CreateProcessAsUser、CreateProcessWithLoginW、CreateProcessWithTokenW 或 WinExec 等函数时，这些进程会获取HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\SessionManager\\AppCertDlls注册表项，此项下的dll都会加载到此进程。"
+author: 'NOPTeam'
+version: '0.0.1'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\AppCertDlls'

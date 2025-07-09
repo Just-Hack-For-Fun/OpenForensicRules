@@ -1,0 +1,48 @@
+name: WindowsPSConfig
+doc: Windows 平台上 Powershell 的配置文件信息收集。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"$PROFILE | Select-Object *"'
+urls:
+  - >-
+    https://learn.microsoft.com/zh-cn/Powershell/module/microsoft.Powershell.core/about/about_profiles?view=Powershell-7.4
+
+---
+
+name: WindowsPSAlias
+doc: Windows 平台上 Powershell 的 Alias 信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"alias"'
+
+---
+
+name: PowershellLog
+author: NOPTeam
+sources:
+  - type: FILE
+    supported_os: Windows
+    attributes:
+      paths:
+        - >-
+          %%environ_systemroot%%\System32\Winevt\Logs\Microsoft-Windows-PowerShell%4Admin.evtx
+        - >-
+          %%environ_systemroot%%\System32\Winevt\Logs\Microsoft-Windows-PowerShell%4Operational.evtx
+        - >-
+          %%environ_systemroot%%\System32\Winevt\Logs\Microsoft-Windows-PowerShell-DesiredStateConfiguration-FileDownloadManager%4Operational.evtx
+version: 0.0.1
+doc: Powershell 相关日志收集。

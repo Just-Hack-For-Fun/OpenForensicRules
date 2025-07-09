@@ -1,0 +1,13 @@
+name: 'WindowsWinsockNSP'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\*'
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\*'
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\Protocol_Catalog9\Catalog_Entries64\*'
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\Protocol_Catalog9\Catalog_Entries\*'
+version: '0.0.1'
+doc: "WinSock NSP（WinSock Namespace Provider）是指在 Windows 操作系统中实现⽹络套接字编程接⼝（Socket API）的组件之⼀。它负责提供⽹络通信的底层功能，使应⽤程序能\n够通过⽹络进⾏数据传输。\nWinSock NSP 通过⼀组动态链接库（DLL）来实现，这些 DLL 包含了实现⽹络协议栈和通信协议的代码。它们提供了⼀种标准化的编程接⼝，使开发⼈员能够使⽤常⻅的⽹络协议（如TCP/IP、UDP）进⾏⽹络通信。\n通过 WinSock NSP，开发⼈员可以创建套接字、建⽴连接、发送和接收数据等⽹络操作。\n它提供了⼀系列函数和数据结构，使应⽤程序能够⽅便地进⾏⽹络编程，实现⽹络通信功能"

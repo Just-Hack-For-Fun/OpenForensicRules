@@ -1,0 +1,35 @@
+name: 'WindowsProcess'
+author: 'NOPTeam'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'tasklist'
+      args:
+        - '/v'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'tasklist'
+      args:
+        - '/m'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'tasklist'
+      args:
+        - '/svc'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'powershell'
+      args:
+        - '-c'
+        - '"gps"'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: ''
+      query: 'SELECT * FROM Win32_Process'
+version: '0.0.1'
+doc: 'Windows 平台上进程信息。'

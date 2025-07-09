@@ -1,0 +1,11 @@
+name: 'WindowsIPCShare'
+author: 'NOPTeam'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'net'
+      args:
+        - 'share'
+version: '0.0.1'
+doc: 'Windows 平台上 IPC 共享信息收集。'

@@ -1,0 +1,35 @@
+name: WindowsServices
+doc: Windows 平台上服务信息。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: sc
+      args:
+        - queryex
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-Service | Select *"'
+  - type: WMI
+    supported_os: Windows
+    attributes:
+      base_object: ''
+      query: SELECT * FROM Win32_Service
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce
+        - >-
+          HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce
+        - >-
+          HKEY_USERS\%%users_sid%%\Software\Microsoft\Windows\CurrentVersion\RunServices

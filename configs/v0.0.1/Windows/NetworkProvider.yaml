@@ -1,0 +1,19 @@
+name: 'WindowsNetworkProvider'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_VALUE'
+    supported_os: 'Windows'
+    attributes:
+      key_value_pairs:
+        - key: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order'
+          value: 'ProviderOrder'
+        - key: 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\HwOrder'
+          value: 'ProviderOrder'
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider\ProviderOrder'
+        - 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider'
+version: '0.0.1'
+doc: "Network Provider（网络提供者）是 Windows 网络子系统的一个扩展机制，用于实现对网络资源（如共享文件夹、打印机、云盘等）的访问和认证。\n可以在 HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\ 寻找相关服务。"

@@ -1,0 +1,21 @@
+name: 'WindowsSensitiveDir'
+author: 'NOPTeam'
+sources:
+  - type: 'PATH'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - '%%users_temp%%'
+        - 'C:\Windows\Temp'
+  - type: 'PATH'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - 'C:\$Recycle.Bin'
+  - type: 'PATH'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - '%%environ_systemdrive%%\Users\Public'
+version: '0.0.1'
+doc: 'Windows 平台上敏感目录收集。'

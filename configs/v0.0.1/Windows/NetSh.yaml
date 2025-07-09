@@ -1,0 +1,12 @@
+name: 'WindowsNetSh'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NetSh'
+version: '0.0.1'
+doc: "NetSh（Network Shell） 是 Windows 自带的一个强大的命令行网络配置工具。\n攻击者可能注册帮助程序来进行权限维持。"
+urls:
+  - 'https://pentestlab.blog/2019/10/29/persistence-netsh-helper-dll/'

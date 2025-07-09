@@ -1,0 +1,13 @@
+name: 'WindowsAppInitDLL'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_VALUE'
+    supported_os: 'Windows'
+    attributes:
+      key_value_pairs:
+        - key: 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows'
+          value: 'AppInit_DLLs'
+        - key: 'HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows'
+          value: 'AppInit_DLLs'
+version: '0.0.1'
+doc: 'AppInit DLLs 是 Windows 系统提供的一种全局 DLL 注入机制，用于让指定的 DLL 自动加载到所有使用 User32.dll 的进程（几乎所有带 GUI 的应用程序）中。'

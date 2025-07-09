@@ -1,0 +1,16 @@
+name: 'WindowsAccessibility'
+author: 'NOPTeam'
+sources:
+  - type: 'FILE'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - '%%environ_systemroot%%\System32\sethc.exe'
+        - '%%environ_systemroot%%\System32\utilman.exe'
+        - '%%environ_systemroot%%\System32\osk.exe'
+        - '%%environ_systemroot%%\System32\Magnify.exe'
+        - '%%environ_systemroot%%\System32\Narrator.exe'
+        - '%%environ_systemroot%%\System32\DisplaySwitch.exe'
+        - '%%environ_systemroot%%\System32\AtBroker.exe'
+version: '0.0.1'
+doc: 'Windows 平台辅助程序信息收集。'

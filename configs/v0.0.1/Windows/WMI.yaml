@@ -1,0 +1,95 @@
+name: 'WindowsWmi'
+author: 'NOPTeam'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\subscription"'
+        - 'path'
+        - '__EventFilter'
+        - 'get'
+        - '*'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\DEFAULT"'
+        - 'path'
+        - '__EventFilter'
+        - 'get'
+        - '*'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\subscription"'
+        - 'path'
+        - '__EventConsumer'
+        - 'get'
+        - '*'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\DEFAULT"'
+        - 'path'
+        - '__EventConsumer'
+        - 'get'
+        - '*'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\subscription"'
+        - 'path'
+        - '__FilterToConsumerBinding'
+        - 'get'
+        - '*'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'wmic'
+      args:
+        - '/namespace:"\\root\DEFAULT"'
+        - 'path'
+        - '__FilterToConsumerBinding'
+        - 'get'
+        - '*'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\subscription'
+      query: 'SELECT * FROM __EventFilter'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\DEFAULT'
+      query: 'SELECT * FROM __EventFilter'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\subscription'
+      query: 'SELECT * FROM __EventConsumer'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\DEFAULT'
+      query: 'SELECT * FROM __EventConsumer'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\DEFAULT'
+      query: 'SELECT * FROM __EventConsumer'
+  - type: 'WMI'
+    supported_os: 'Windows'
+    attributes:
+      base_object: 'root\subscription'
+      query: 'SELECT * FROM __FilterToConsumerBinding'
+version: '0.0.1'
+doc: 'Windows 平台上 WMI 后门信息收集。'

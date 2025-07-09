@@ -1,0 +1,36 @@
+name: WindowsCmdHistory
+doc: |-
+  Windows 平台上 cmd 历史信息。
+  cmd 命令历史只能在未关闭的 cmd 命令窗中进⾏查询，如果 cmd 窗⼝关闭，或未通过 cmd 命令窗进⾏的命令操作，是不会记录的。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: doskey
+      args:
+        - /history
+
+---
+
+name: WindowsPSHistory
+doc: Windows 平台上 Powershell 的历史记录。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-History"'
+  - type: FILE
+    supported_os: Windows
+    attributes:
+      paths:
+        - >-
+          %%users_userprofile%%\AppData\Roaming\Microsoft\PowerShell\PSReadLine\ConsoleHost_history.txt
+        - >-
+          %%users_userprofile%%\\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt

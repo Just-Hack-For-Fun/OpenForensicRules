@@ -1,0 +1,21 @@
+name: WindowsIFEOInjection
+doc: >-
+  Image File Execution Options (IFEO) 是一个 Windows 调试功能，而不是一个后门。IFEO
+  的主要目的是允许开发人员调试和跟踪特定的可执行文件。
+
+
+  IFEO 提供了一种机制，使开发人员能够将一个调试器程序关联到特定的可执行文件，并在执行该可执行文件时启动调试器。这对于开发、调试和分析应用程序非常有用。
+
+  当给定的可执行文件被启动时，操作系统会检查注册表中的 IFEO
+  设置。如果找到了对应的注册表项，系统会自动启动所配置的调试器程序，并将目标可执行文件作为参数传递给调试器。这样，开发人员就可以使用调试器来监视和分析目标应用程序的运行过程，以便调试和解决问题。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: REGISTRY_VALUE
+    supported_os: Windows
+    attributes:
+      key_value_pairs:
+        - key: >-
+            HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+            NT\CurrentVersion\Image File Execution Options\*
+          value: debugger

@@ -1,0 +1,16 @@
+name: 'WindowsApplicationShimming'
+author: 'NOPTeam'
+sources:
+  - type: 'PATH'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - '%%environ_windir%%\AppPatch\'
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\InstalledSDB'
+        - 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Custom'
+version: '0.0.1'
+doc: "Application Shimming（应用程序垫片/兼容性垫片）\n是 Windows 系统内置的一种兼容性子系统机制，允许为指定程序注入“垫片”代码，以“修正”或“修改”程序的运行行为。"

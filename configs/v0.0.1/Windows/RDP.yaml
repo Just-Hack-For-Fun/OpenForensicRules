@@ -1,0 +1,16 @@
+name: 'WindowsRDP'
+author: 'NOPTeam'
+sources:
+  - type: 'REGISTRY_KEY'
+    supported_os: 'Windows'
+    attributes:
+      keys:
+        - 'HKEY_USERS\%%users_sid%%\Software\Microsoft\Terminal Server Client\Default'
+        - 'HKEY_USERS\%%users_sid%%\Software\Microsoft\Terminal Server Client\Servers'
+  - type: 'FILE'
+    supported_os: 'Windows'
+    attributes:
+      paths:
+        - '%%users_userprofile%%\Documents\Default.rdp'
+version: '0.0.1'
+doc: 'Windows 平台上 RDP 相关信息收集。'

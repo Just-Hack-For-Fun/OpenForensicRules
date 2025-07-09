@@ -1,0 +1,24 @@
+name: 'WindowsLogin'
+author: 'NOPTeam'
+sources:
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'query'
+      args:
+        - 'user'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'query'
+      args:
+        - 'session'
+  - type: 'COMMAND'
+    supported_os: 'Windows'
+    attributes:
+      cmd: 'powershell'
+      args:
+        - '-c'
+        - '"Get-SmbSession"'
+version: '0.0.1'
+doc: 'Windows 平台上与登录信息相关内容收集。'

@@ -1,0 +1,45 @@
+name: WindowsDefender
+doc: Windows Defender 检测到的信息收集。
+author: NOPTeam
+version: 0.0.1
+sources:
+  - type: FILE
+    supported_os: Windows
+    attributes:
+      paths:
+        - >-
+          %%environ_systemroot%%\System32\Winevt\Logs\Microsoft-Windows-Windows
+          Defender*.evtx
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-MpThreatDetection | Format-List"'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-MpThreat"'
+  - type: COMMAND
+    supported_os: Windows
+    attributes:
+      cmd: powershell
+      args:
+        - '-c'
+        - '"Get-MpPreference | Format-List"'
+  - type: PATH
+    supported_os: Windows
+    attributes:
+      paths:
+        - '%%environ_programdata%%\Microsoft\Windows Defender\Quarantine\'
+  - type: REGISTRY_KEY
+    supported_os: Windows
+    attributes:
+      keys:
+        - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender
+        - HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender
+        - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend
